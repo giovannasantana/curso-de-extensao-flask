@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import os
 os.system('cls')
 
@@ -28,6 +28,12 @@ def ola_mundo():
 def funcao_teste(variavel=""):
     # Passando informacoes através do format
     return "Nova rota teste: {}".format(variavel), 200
+
+
+# Rota de formulario
+@app.route("/form")
+def form():
+    return render_template("form.html"), 200
 
 
 app.run()
