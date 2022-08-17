@@ -36,4 +36,16 @@ def form():
     return render_template("form.html"), 200
 
 
+# Rota para tratamento do formulario
+# methods = Definir o metodo que vai receber
+@app.route("/form_recebe", methods=["GET", "POST"])
+def form_recebe():
+    if request.method == "POST":
+        # Vai trazer o que está no name do form.html
+        nome = request.form["nome"]
+        return "Nome: {}".format(nome), 200
+    else:
+        return "Não pode chamar direto no GET", 200
+
+
 app.run()
