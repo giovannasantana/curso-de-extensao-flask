@@ -22,9 +22,12 @@ def ola_mundo():
 
 
 # Criando uma nova rota teste
-@app.route("/teste")
-def funcao_teste():
-    return "Nova rota teste", 200  # Código http da requisicao
+@app.route("/teste/")
+@app.route("/teste/<variavel>")
+# Se a variavel não for passada carrega normalmente
+def funcao_teste(variavel=""):
+    # Passando informacoes através do format
+    return "Nova rota teste: {}".format(variavel), 200
 
 
 app.run()
