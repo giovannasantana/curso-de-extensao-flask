@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Flask, render_template, request, session, redirect, url_for
 import os
 os.system('cls')
@@ -69,6 +68,15 @@ def login_validar():
         return redirect(url_for("acesso_restrito"))
     else:
         return "Usuario/senha inválidos, digite novamente"
+
+
+# Rota para a área restrita
+@app.route("/restrito")
+def acesso_restrito():
+    if session["codigo"] == 1:
+        return "Bem-vindo à area restrita!!<br>Usuário: {}<br>Código: {}".format(session["usuario"], session["codigo"]), 200
+    else:
+        return "Acesso inválido", 200
 
 
 app.run()
