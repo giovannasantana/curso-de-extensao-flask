@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request, session
 import os
 os.system('cls')
@@ -56,6 +57,17 @@ def form_recebe():
 @app.route("/login")
 def login():
     return render_template("login.html"), 200
+
+
+# Rota de validacao do login
+@app.route("/login_validar", methods=["POST"])
+def login_validar():
+    if request.form["usuario"] == "lima" and request.form["senha"] == "123":
+        #
+        session["usuario"] = request.form["usuario"]
+        session["codigo"] = 1
+    else:
+        return "Usuario/senha inválidos, digite novamente"
 
 
 app.run()
