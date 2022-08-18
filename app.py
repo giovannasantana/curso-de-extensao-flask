@@ -1,9 +1,13 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 import os
 os.system('cls')
 
 # Instanciando um objeto
 app = Flask("projeto")
+
+# Criando uma chave de encriptografia
+# Deve ser colado em um arquivo a parte (arquivo.py e colocar no git ignore)
+app.secret_key = "sahdqw38328eh37y3he9238(*&*&"
 
 
 # Criando uma rota raiz
@@ -46,6 +50,12 @@ def form_recebe():
         return "Nome: {}".format(nome), 200
     else:
         return "Não pode chamar direto no GET", 200
+
+
+# Rota form de LOGIN
+@app.route("/login")
+def login():
+    return render_template("login.html"), 200
 
 
 app.run()
